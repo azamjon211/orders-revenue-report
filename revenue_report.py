@@ -29,7 +29,11 @@ def main():
                 amount = Decimal(row.get("amount") or "")
                 if amount <= 0:
                     raise ValueError(f"non-positive amount '{amount}'")
-                month = datetime.fromisoformat((row.get("created_at") or "").strip()).strftime("%Y-%m")
+                created_at = (row.get("created_at") or "").strip()
+                try:
+                    month = datetime.fromisoformat(created_at).strftime("%Y-%m")
+                except ValueError:
+                    raise ValueError(f"invalid created_at '{created_at}'")
             except (ValueError, InvalidOperation) as e:
                 reason = "invalid amount" if isinstance(e, InvalidOperation) else str(e)
                 invalid.append((line_no, reason))

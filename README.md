@@ -30,9 +30,9 @@ Skipped 6 invalid row(s):
   line 12: invalid amount
   line 13: missing order_id or customer_id
   line 14: non-positive amount '-40.00'
-  line 15: month must be in 1..12, not 13
+  line 15: invalid created_at '2024-13-01'
   line 16: duplicate order_id '3'
-  line 17: Invalid isoformat string: ''
+  line 17: invalid created_at ''
 
 customer_id  month       revenue
 C004         2024-02      500.00
